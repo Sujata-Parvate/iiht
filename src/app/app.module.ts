@@ -10,6 +10,8 @@ import{ FormsModule } from '@angular/forms';
 import{ HttpClientModule} from '@angular/common/http';
 
 import { AuthserviceService } from './services/authservice.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { GeneratePageComponent } from './generate-page/generate-page.component';
 const routes: Routes = [
   {
   path: 'user',
@@ -20,6 +22,14 @@ const routes: Routes = [
     component: UserRegComponent,
     },
     {
+      path: 'dashboard',
+      component: DashboardComponent,
+      },
+      {
+        path: 'page',
+        component: GeneratePageComponent,
+        },
+    {
       path: '',
       redirectTo: '/user',
       pathMatch:'full',
@@ -29,7 +39,9 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     UserComponent,
-    UserRegComponent
+    UserRegComponent,
+    DashboardComponent,
+    GeneratePageComponent
   ],
   imports: [
     BrowserModule,
