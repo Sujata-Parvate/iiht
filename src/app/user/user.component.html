@@ -1,0 +1,32 @@
+<div class="container">
+
+    <form id="signup" #signupForm="ngForm" (ngSubmit)="StudentSignup(signupForm.value)">
+
+        <div class="header">
+        
+            <h3>Sign Up</h3>
+            
+        </div>
+        
+        <div class="sep"></div>
+
+        <div class="inputs">
+        
+            <input type="userName" placeholder="userName" ngModel name="userName"  />
+        
+            <input type="password" placeholder="Password"  ngModel name="password"  />
+            
+            <!-- <div class="checkboxy">
+                <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>
+            </div> -->
+            
+            <!-- <a id="submit" href="#">SIGN UP</a> -->
+            <button  style="margin-top:1em;" class="button" type="submit">SIGN UP</button> 
+            
+        
+        </div>
+
+    </form>
+
+</div>
+​
