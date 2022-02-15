@@ -24,6 +24,8 @@ export class UserComponent implements OnInit {
     //console.log("json", result);
     this.authoservice.token= result.token;
     alert("student !!!"+this.authoservice.token);
+
+    localStorage.setItem("token",this.authoservice.token);
     
 } )
 }

@@ -11,9 +11,12 @@ export class AppComponent
 {
   constructor(private authService:AuthserviceService,private rout:Router)
   {
-     if(this.authService.token=="")
+
+    var token= localStorage.getItem("token");
+     alert(token+"   this is token")
+     if(token!=undefined  && token.length>5)
      {
-       this.rout.navigate(['/', 'users']);;
+       this.rout.navigate(['/user']);;
      }
   }
   title = 'AngularWhee';
