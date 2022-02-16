@@ -36,7 +36,7 @@ export class AuthserviceService {
   GeneratePageUrl(data:any,method:any){
     debugger;
     let AuthHeader=new HttpHeaders({'Authorization': this.token});
-    //AuthHeader.append('Access-Control-Allow-Origin','*');
+    AuthHeader.append('Access-Control-Allow-Origin','*');
    // AuthHeader.append('Authorization',this.token);
     
    return this.http.post(this.BaseURL +"UserToken/GeneratePageURL1" ,data,{headers:AuthHeader})
