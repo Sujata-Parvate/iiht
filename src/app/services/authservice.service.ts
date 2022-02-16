@@ -20,7 +20,7 @@ export class AuthserviceService {
      debugger;
      let AuthHeader=new HttpHeaders();
      AuthHeader.append('Access-Control-Allow-Origin','*');
-    return this.http.post("https://localhost:44317/api/UserToken",data,{headers:AuthHeader});
+    return this.http.post("https://localhost:44317/api/UserToken/GetToken",data,{headers:AuthHeader});
   }
 
  

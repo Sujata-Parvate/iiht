@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule ,Routes } from '@angular/router'
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import{ HttpClientModule} from '@angular/common/http';
 import { AuthserviceService } from './services/authservice.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneratePageComponent } from './generate-page/generate-page.component';
+import { WheeboxuiComponent } from './proctor/wheeboxui/wheeboxui.component';
 const routes: Routes = [
   {
   path: 'user',
@@ -29,6 +30,10 @@ const routes: Routes = [
         path: 'page',
         component: GeneratePageComponent,
         },
+        {
+          path: 'wheebox',
+          component: WheeboxuiComponent,
+          },
     {
       path: '',
       redirectTo: '/user',
@@ -41,9 +46,11 @@ const routes: Routes = [
     UserComponent,
     UserRegComponent,
     DashboardComponent,
-    GeneratePageComponent
+    GeneratePageComponent,
+    WheeboxuiComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
