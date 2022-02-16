@@ -13,14 +13,17 @@ export class GeneratePageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  GetURL(data:any,method:any)
+  str : string='';
+  GetURL(data:any)
   {
-  console.warn(data);
-  this.authoservice.GeneratePageUrl(data,method).subscribe((result:any)=>{
-    //console.log("json", result);
+    debugger;
+  console.log("abc", JSON.stringify(data));
+  this.authoservice.GeneratePageUrl(data).subscribe((result:any)=>{
     alert(JSON.stringify(result));
-    //localStorage.setItem("token",this.authoservice.token);
+     this.str=result.attemptUrl;
+     window.open(this.str);
+    
+    
     
 } )
 }
