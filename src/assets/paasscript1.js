@@ -111,7 +111,7 @@ function aadharrBreak(id){
 	function takepicture() {
 		PliveStreaminCameraStatus=true;
 	     try{
-		var	canvas=document.getElementById("canvas");
+		//var	canvas=document.getElementById("canvas");
 			//if(canvas==undefined)
 			 //  canvas = document.createElement('canvas');
 	    var context = canvas.getContext('2d');

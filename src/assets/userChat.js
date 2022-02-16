@@ -27,7 +27,7 @@
 	    	var key_sno=document.getElementById("key_sno").value;
 
             if(key_sno!=undefined)
-	    	  connectWS1(wssURL+''+key_sno+'ws1/');
+	    	  connectWS1(wssURL+'/'+key_sno+'ws1/');
 	    	console.log('key_sno: '+key_sno);  
 	    }else{  
 	        console.log('web sockets not suported');                       
@@ -93,7 +93,7 @@
             {
                 wssURL="wss://akschat.wheebox.com";
             }
-	    	connectWS2(wssURL+''+key_sno+'ws1/');	   
+	    	connectWS2(wssURL+'/'+key_sno+'ws1/');	   
 	    	//console.log('key_sno: '+key_sno);  
 	    }else{   
 	        console.log('web sockets not suported');                       
