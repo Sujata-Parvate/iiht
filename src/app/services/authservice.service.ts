@@ -40,5 +40,18 @@ export class AuthserviceService {
   
  }
 
+ GetapproverStatus(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/GetapproverStatus" ,data,{headers:AuthHeader})
+
+}
+StudentRegistration(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/getRegistration" ,data,{headers:AuthHeader})
+
+}
+
 }
 

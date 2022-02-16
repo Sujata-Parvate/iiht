@@ -12,6 +12,7 @@ import{ HttpClientModule} from '@angular/common/http';
 import { AuthserviceService } from './services/authservice.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneratePageComponent } from './generate-page/generate-page.component';
+import { CheckapprovalComponent } from './checkapproval/checkapproval.component';
 const routes: Routes = [
   {
   path: 'user',
@@ -29,6 +30,10 @@ const routes: Routes = [
         path: 'generate-page',
         component: GeneratePageComponent,
         },
+        {
+          path: 'checkapproval',
+          component: CheckapprovalComponent,
+          },
     {
       path: '',
       redirectTo: '/user',
@@ -41,7 +46,8 @@ const routes: Routes = [
     UserComponent,
     UserRegComponent,
     DashboardComponent,
-    GeneratePageComponent
+    GeneratePageComponent,
+    CheckapprovalComponent
   ],
   imports: [
     BrowserModule,

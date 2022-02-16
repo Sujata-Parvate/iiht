@@ -22,10 +22,7 @@ export class GeneratePageComponent implements OnInit {
     alert(JSON.stringify(result));
      this.str=result.attemptUrl;
      window.open(this.str);
-    
-    
-    
-} )
+   } )
 }
 
 
