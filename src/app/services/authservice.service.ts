@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{HttpClient,HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class AuthserviceService {
      debugger;
      let AuthHeader=new HttpHeaders();
      AuthHeader.append('Access-Control-Allow-Origin','*');
-    return this.http.post("https://localhost:44317/api/UserToken",data,{headers:AuthHeader});
+    return this.http.post("https://localhost:44317/api/UserToken/GetToken",data);
   }
 
  
@@ -28,9 +29,19 @@ export class AuthserviceService {
      debugger;
      let AuthHeader=new HttpHeaders();
      AuthHeader.append('Access-Control-Allow-Origin','*');
-     AuthHeader.append('Authrization',this.token);
+     AuthHeader.append('Authorization',this.token);
     return this.http.post(this.BaseURL+"/"+method,data,{headers:AuthHeader});
   }
+
+  GeneratePageUrl(data:any,method:any){
+    debugger;
+    let AuthHeader=new HttpHeaders({'Authorization': this.token});
+    //AuthHeader.append('Access-Control-Allow-Origin','*');
+   // AuthHeader.append('Authorization',this.token);
+    
+   return this.http.post(this.BaseURL +"UserToken/GeneratePageURL1" ,data,{headers:AuthHeader})
+   //.map(res =>res.json());
+ }
 
 }
 

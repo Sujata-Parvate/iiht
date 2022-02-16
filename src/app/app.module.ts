@@ -26,7 +26,7 @@ const routes: Routes = [
       component: DashboardComponent,
       },
       {
-        path: 'page',
+        path: 'generate-page',
         component: GeneratePageComponent,
         },
     {

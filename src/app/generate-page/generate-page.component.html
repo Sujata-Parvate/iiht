@@ -1,1 +1,8 @@
 <p>generate-page works!</p>
+
+
+    <form id="url" #getURL="ngForm" (ngSubmit)="GetURL(getURL.value,'1231')">
+        <div class="sep">
+            <button  style="margin-top:1em;" class="button" type="submit">GetURL</button> 
+        </div>
+    </form>

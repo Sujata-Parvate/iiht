@@ -19,9 +19,11 @@ export class UserComponent implements OnInit {
 
   StudentSignup(data:any)
   {
+    debugger;
   console.warn(data);
   this.authoservice.SignUp(data).subscribe((result:any)=>{
-    //console.log("json", result);
+    debugger;
+    
     this.authoservice.token= result.token;
     alert("student !!!"+this.authoservice.token);
 
