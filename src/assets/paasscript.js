@@ -1,6 +1,7 @@
 /**
  * ref path : https://statiswheebox.z29.web.core.windows.net/wet/assest/paas/paasscript.js
  */
+/*
 document.getElementById('open-room').onclick = function() {
     disableInputButtons();
     connection.open(document.getElementById('room-id').value, function(isRoomOpened, roomid, error) {
@@ -16,8 +17,31 @@ document.getElementById('open-room').onclick = function() {
           alert(error);
         }
     });
-};
+};*/
+function openIiht()
+{
+  
+  alert("In Js lab code");
+  if(connection==undefined)
+  {
 
+    alert("Connection Undefined");
+    resetCon();
+  }
+  connection.open(document.getElementById('room-id').value, function(isRoomOpened, roomid, error) {
+    if(isRoomOpened === true) {
+      showRoomURL(connection.sessionid);
+    }
+    else {
+      disableInputButtons(true);
+      if(error === 'Room not available') {
+        alert('Someone already created this room. Please either join or create a separate room.');
+        return;
+      }
+      alert(error);
+    }
+});
+}
 
 document.getElementById('join-room').onclick = function() {
     disableInputButtons();
@@ -307,4 +331,119 @@ if(navigator.connection &&
    navigator.connection.type === 'cellular' &&
    navigator.connection.downlinkMax <= 0.115) {
   alert('2G is not supported. Please use a better internet service.');
+}
+
+
+function resetCon()
+{
+
+  connection = new RTCMultiConnection();
+
+  // by default, socket.io server is assumed to be deployed on your own URL
+  //connection.socketURL = '/';
+   
+  // comment-out below line if you do not have your own socket.io server
+   connection.socketURL = 'https://aksstream.wheebox.com:443/';
+     
+  connection.socketMessageEvent = 'video-conference-demo';
+  
+  connection.session = {
+      audio: true, 
+      video: true,
+      oneway: true 
+  };
+  
+  connection.sdpConstraints.mandatory = {
+      OfferToReceiveAudio: true,
+      OfferToReceiveVideo: true
+  };
+  
+  connection.videosContainer = document.getElementById('videos-container');
+  connection.onstream = function(event) {
+      var existing = document.getElementById(event.streamid);
+      if(existing && existing.parentNode) {
+        existing.parentNode.removeChild(existing);
+      }
+  
+      event.mediaElement.removeAttribute('src');
+      event.mediaElement.removeAttribute('srcObject');
+      event.mediaElement.muted = true;
+      event.mediaElement.volume = 0;
+  
+      var video = document.createElement('video');
+      video.setAttribute("id", "video");
+           
+      try {
+          video.setAttributeNode(document.createAttribute('autoplay'));
+          video.setAttributeNode(document.createAttribute('playsinline'));
+      } catch (e) {
+          video.setAttribute('autoplay', true);
+          video.setAttribute('playsinline', true);
+      }
+  
+      if(event.type === 'local') {
+        video.volume = 0;
+        try {
+            video.setAttributeNode(document.createAttribute('muted'));
+        } catch (e) {
+            video.setAttribute('muted', true);
+        }
+      }
+      video.srcObject = event.stream;
+  
+      var width = parseInt(connection.videosContainer.clientWidth / 3) - 20;
+      var mediaElement = getHTMLMediaElement(video, {
+          title: "",//event.userid 
+          buttons: ['full-screen'],
+          width: width, //width
+          showOnMouseEnter: false
+      });
+  
+      connection.videosContainer.appendChild(mediaElement);
+  
+      setTimeout(function() {
+          mediaElement.media.play();
+      }, 5000);
+  
+      mediaElement.id = event.streamid;
+  
+      // to keep room-id in cache
+      localStorage.setItem(connection.socketMessageEvent, connection.sessionid);
+  
+      chkRecordConference.parentNode.style.display = 'none';
+  
+      if(chkRecordConference.checked === true) {
+        btnStopRecording.style.display = 'inline-block';
+        recordingStatus.style.display = 'inline-block';
+  
+        var recorder = connection.recorder;
+        if(!recorder) {
+          recorder = RecordRTC([event.stream], {
+            type: 'video'
+          });
+          recorder.startRecording();
+          connection.recorder = recorder;
+        }
+        else {
+          recorder.getInternalRecorder().addStreams([event.stream]);
+        }
+  
+        if(!connection.recorder.streams) {
+          connection.recorder.streams = [];
+        }
+  
+        connection.recorder.streams.push(event.stream);
+        recordingStatus.innerHTML = 'Recording ' + connection.recorder.streams.length + ' streams';
+      }
+  
+      if(event.type === 'local') {
+        connection.socket.on('disconnect', function() {
+          if(!connection.getAllParticipants().length) {
+            //location.reload();
+            threadReconnectLiveVideoStreaming();
+          }
+        });
+      }
+  };
+  
 }

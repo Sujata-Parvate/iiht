@@ -107,14 +107,13 @@ function aadharrBreak(id){
 	var width = 320;    // We will scale the photo width to this
 	var height = 240;     // This will be computed based on the input stream
 	var PliveStreaminCameraStatus=false;      
-	
+	 
 	function takepicture() {
 		PliveStreaminCameraStatus=true;
-	     try{
-		//var	canvas=document.getElementById("canvas");
-			//if(canvas==undefined)
-			 //  canvas = document.createElement('canvas');
-	    var context = canvas.getContext('2d');
+	     try
+		 {
+			var	canvas=document.getElementById("canvas");
+	        var context = canvas.getContext('2d');
 
 	       canvas.width = width;  
 	       canvas.height = height;
@@ -177,6 +176,12 @@ function aadharrBreak(id){
 	
 	var startProctoringThreadinterval;
 	function startProctoringThread(interval,facerec_required,objectdetction_required,token,userdetail){
+		$("#streaming-camera-circle").click(function() {
+			alert("Camera Click");    
+		  $("#streaming-camera-circle").toggle('scale');
+		  $(".streaming-box").toggle('scale');
+		})
+		
 		startProctoringThreadinterval=setInterval(function(){sendImagetoserver("captureImage",facerec_required,objectdetction_required,token,userdetail);},interval); 
 	}
 	
@@ -373,6 +378,8 @@ function responseOfChat(response){
 		}
 			
 		try{
+			//alert();
+			alert("Image Response :-"+internetstatus+" "+facecheck+" "+objectcheck+" "+mtoff+" "+noface );
 			responseOfProcessedImages(internetstatus,facecheck,objectcheck,mtoff,noface);
 		}catch(e){}
 		//console.log(checkOverallProctoringStatus()	); 
@@ -393,6 +400,11 @@ function checkOverallProctoringStatus()
 
 }
 	
+responseOfProcessedImages(internetstatus,facecheck,objectcheck,mtoff,noface)
+{
+   alert(internetstatus+" "+facecheck+" "+objectcheck+" "+mtoff+" "+noface );
+}
+
 function msgReader(){
 	//console.log("msgReader called");
 	

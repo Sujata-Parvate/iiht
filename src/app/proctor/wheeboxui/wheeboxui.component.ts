@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { AfterViewInit,ElementRef,ViewChild } from '@angular/core'; 
+
 import { AuthserviceService } from 'src/app/services/authservice.service';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+declare function openIiht(): any; 
 declare function connectionwsGet1(n:number): any; 
 declare function startProctoringThread(n:number,b:boolean,b1:boolean  ,s:string,o:any): any; 
-
 @Component({
   selector: 'app-wheeboxui',
   templateUrl: './wheeboxui.component.html',
@@ -16,11 +16,8 @@ export class WheeboxuiComponent implements OnInit  ,AfterViewInit
 
   }
 
-
   ngAfterViewInit(): void {
-   setTimeout(()=>{
     this.startClentLiveVideoStreaming();
-   },2000);
   }
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
@@ -37,12 +34,10 @@ export class WheeboxuiComponent implements OnInit  ,AfterViewInit
 
   
 
-   startClentLiveVideoStreaming()
-   {
-      alert("Attempt Id "+this.udetail.attemptId);
-      let key_sno=this.udetail.attemptId; 
+   startClentLiveVideoStreaming(){
+    alert(this.udetail.attemptId);
+    let key_sno=this.udetail.attemptId; 
     
-      alert(this.authService.token+"   This is token" );
    // this.fname?.nativeElement.
   //  document.getElementById("fname").value=udetail.student_name;
    // document.getElementById("room-id").value=key_sno;
@@ -50,15 +45,15 @@ export class WheeboxuiComponent implements OnInit  ,AfterViewInit
      
     //document.getElementById("open-room").click();
 
-        this.open_room?.nativeElement.click();
+    this.open_room?.nativeElement.click();
 
-        key_sno=this.udetail.attemptId; 
-        connectionwsGet1(3000);   //start chating thread now and getting chat messages from server.  
-        startProctoringThread(5000,true,true,
-        //'ea82252a-4df9-4bcb-be50-b88cbd7a36b8',
-        this.authService.token,
-        this.udetail);  // This function needs to be called once when test starts.
-   
+    key_sno=this.udetail.attemptId; 
+    connectionwsGet1(3000);   //start chating thread now and getting chat messages from server.  
+    startProctoringThread(5000,true,true,this.authService.token,this.udetail);  // This function needs to be called once when test starts.
+    setTimeout(()=>{
+      alert("5000 completed");
+      openIiht();
+    },100);
    
   }
 
@@ -72,7 +67,7 @@ export class WheeboxuiComponent implements OnInit  ,AfterViewInit
     //openIiht
 
     alert("click");
-    //openIiht();
+    openIiht();
   }
 
 

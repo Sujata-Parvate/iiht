@@ -4,8 +4,6 @@
     //start first step to send a msg
          var wssURL= document.getElementById("chatURL").innerHTML;
     var wsGet1;  
-
-    var keySNO;
      
     var th1; 
     function ConnectingGet1(time){
@@ -18,16 +16,14 @@
        
     function connectionwsGet1(){
 		 
-        if(wssURL==undefined)
-        {
-            wssURL="wss://akschat.wheebox.com";
-        }
-	    if ('WebSocket' in window) 
-        { 
+	    if ('WebSocket' in window) { 
 	    	var key_sno=document.getElementById("key_sno").value;
-
-            if(key_sno!=undefined)
-	    	  connectWS1(wssURL+'/'+key_sno+'ws1/');
+            alert("Key_sno  "+key_sno);
+            if(wssURL==undefined)
+            {
+              wssURL="wss://akschat.wheebox.com/";
+            }
+	    	connectWS1(wssURL+''+key_sno+'ws1/');
 	    	console.log('key_sno: '+key_sno);  
 	    }else{  
 	        console.log('web sockets not suported');                       
@@ -35,6 +31,7 @@
     }
     
     function connectWS1(host) {
+        alert("host  :"+host);
     	wsGet1 = new WebSocket(host);
     	wsGet1.onopen = function () {
             console.log('connected: Sender');
@@ -88,12 +85,8 @@
 	var wsGet2;
 	    if ('WebSocket' in window) { 
 	    	var key_sno=document.getElementById("key_sno").value;
-	           
-            if(wssURL==undefined)
-            {
-                wssURL="wss://akschat.wheebox.com";
-            }
-	    	connectWS2(wssURL+'/'+key_sno+'ws1/');	   
+	             
+	    	connectWS2(wssURL+''+key_sno+'ws1/');	   
 	    	//console.log('key_sno: '+key_sno);  
 	    }else{   
 	        console.log('web sockets not suported');                       
