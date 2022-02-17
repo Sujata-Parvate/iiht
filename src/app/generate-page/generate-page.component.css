@@ -23,35 +23,35 @@ body {
     position: static;
 }
 
-#url .header {
+#url.header {
     margin-bottom: 20px;
 }
 
-#url .header h3 {
+#url.header h3 {
     color: #333333;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-#signup .header p {
+#url.header p {
     color: #8f8f8f;
     font-size: 14px;
     font-weight: 300;
 }
 
-#url .sep {
+#url.sep {
     height: 1px;
     background: #e8e8e8;
     width: 406px;
     margin: 0px -25px;
 }
 
-#url .inputs {
+#url.inputs {
     margin-top: 25px;
 }
 
-#url .inputs label {
+#url.inputs label {
     color: #8f8f8f;
     font-size: 12px;
     font-weight: 300;
@@ -68,9 +68,10 @@ input:-moz-placeholder {
     color:    #b5b5b5;
 }
 
-#url .inputs input[type=student_unique_id] ,input[type=custom_logo],
+#url.inputs input[type=student_unique_id3] ,input[type=custom_logo],[type=student_unique_id_4],
 input[type=custom_title], input[type=return_url], input[type=event_id],input[type=param] 
-,input[type=pagetype], input[type=autoapproval], input[type=attemptnumber] ,input[type=captureimage]
+ ,input[type=pagetype]
+,input[type=autoapproval], input[type=attemptnumber],input[type=captureimage]
 {
     background: #f5f5f5;
     font-size: 0.8rem;
@@ -85,16 +86,16 @@ input[type=custom_title], input[type=return_url], input[type=event_id],input[typ
     clear: both;
 }
 
-#url.inputs input[type=student_unique_id] ,input[type=custom_logo],
-input[type=custom_title], input[type=return_url], input[type=event_id],input[type=param] 
-,input[type=pagetype], input[type=autoapproval],input[type=attemptnumber], input[type=captureimage]
+#url.inputs input[type=student_unique_id3] ,input[type=custom_logo],[type=student_unique_id_4],
+input[type=custom_title], input[type=return_url], input[type=event_id],input[type=param],
+input[type=autoapproval],input[type=attemptnumber], input[type=captureimage]
 {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
     outline: none;   
 }
 
-#url .inputs .checkboxy {
+#url.inputs.checkboxy {
     display: block;
     position: static;
     height: 25px;
@@ -102,19 +103,24 @@ input[type=custom_title], input[type=return_url], input[type=event_id],input[typ
     clear: both;
 }
 
-#url .inputs input[type=checkbox] {
+#url.inputs input[type=checkbox] {
     float: left;
     margin-right: 10px;
     margin-top: 3px;
 }
+#url.inputs input[type=dropdown] {
+    background: #fff;
+    box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
+    outline: none; 
+}
 
-#url .inputs label.terms {
+#url.inputs label.terms {
     float: left;
     font-size: 14px;
     font-style: italic;
 }
 
-#url .inputs #submit {
+#url.inputs #url {
     width: 100%;
     margin-top: 20px;
     padding: 15px 0;
@@ -153,7 +159,7 @@ input[type=custom_title], input[type=return_url], input[type=event_id],input[typ
     clear: both;
 }
 
-#signup .inputs #submit:hover {
+#url.inputs #url:hover {
     background: -moz-linear-gradient(
         top,
         #a4b0cb 0%,

@@ -12,22 +12,32 @@
             <div class="sep"></div>
     
             <div class="inputs">
-                 <input type="student_unique_id" placeholder="student_unique_id"  ngModel name="student_unique_id"/>
-                <input type="custom_logo" placeholder="custom_logo"  ngModel name="custom_logo"/>
+                 <!-- <input type="student_unique_id3" placeholder="student_unique_id"  ngModel name="student_unique_id"/> -->
+                 <input type="student_unique_id_4" placeholder="student_unique_id"  ngModel name="student_unique_id"/>
+                 <input type="custom_logo" placeholder="custom_logo"  ngModel name="custom_logo"/>
                 <input type="custom_title" placeholder="custom_title"  ngModel name="custom_title"/>
                 <input type="return_url" placeholder="return_url"  ngModel name="return_url"/>
                 <input type="event_id" placeholder="event_id"  ngModel name="event_id"/>
                 <input type="param" placeholder="param"  ngModel name="param"/>
-                <input type="pagetype" placeholder="pagetype"  ngModel name="pagetype"/>
+                <!-- <input type="pagetype" placeholder="pagetype"  ngModel name="pagetype"/> -->
+                <label for="pagetype"></label>
+                 <select type="dropdown" ngModel placeholder="pagetype"   name="pagetype">
+                     <option  *ngFor = "let Page of PageTypes" [value] = "Page.value">{{Page.display}} </option> 
+                </select>
                 <input type="autoapproval" value="true" placeholder="autoapproval" name="autoapproval"/>
                 <input type="attemptnumber" placeholder="attemptnumber"  ngModel name="attemptnumber"/>
-                <input type="captureimage" placeholder="captureimage"  ngModel name="captureimage"/>
+                <!-- <input type="captureimage" placeholder="captureimage"  ngModel name="captureimage"/> -->
                 
+                <label for="captureimage"></label>
+                 <select type="dropdown" ngModel placeholder="captureimage"  name="captureimage">
+                     <option  *ngFor = "let cap of Captureimages" [value] = "cap.value">{{cap.display}} </option> 
+                </select>
              
-                <button  style="margin-top:1em;" class="button" type="submit">GetURL</button> 
+                
                 
             
             </div>
+            <button  style="margin-top:1em;" class="button" type="submit">GetURL</button> 
     
         </form>
     
