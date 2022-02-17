@@ -12,12 +12,15 @@ export class GetReportComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  str : string='';
   GetReport(data:any)
   {
     debugger;
   console.log("abc", JSON.stringify(data));
   this.authoservice.GetReport(data).subscribe((result:any)=>{
     alert(JSON.stringify(result));
+    this.str=result.reportUrl;
+     window.open(this.str);
     
    } )
   }

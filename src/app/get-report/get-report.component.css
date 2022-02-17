@@ -83,7 +83,7 @@ input:-moz-placeholder {
     clear: both;
 }
 
-#getreport.inputs input[type=student_id_22], input[type=event_id_22],input[type=attemptnumber_22]
+#getreport.inputs input[type=student_id_22],input[type=students], input[type=event_id_22],input[type=attemptnumber_22]
  {
     background: #fff;
     box-shadow: 0px 0px 0px 3px #fff38e, inset 0px 2px 3px rgba( 0,0,0,0.2 ), 0px 5px 5px rgba( 0,0,0,0.15 );
