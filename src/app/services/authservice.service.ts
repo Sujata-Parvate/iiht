@@ -53,5 +53,25 @@ StudentRegistration(data:any){
 
 }
 
+GetTrainStatus(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/GetTrainStatus" ,data,{headers:AuthHeader})
+
+}
+
+GetReport(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/GetReport" ,data,{headers:AuthHeader})
+
+}
+ReportScore(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/GetReportScore" ,data,{headers:AuthHeader})
+
+}
+
 }
 

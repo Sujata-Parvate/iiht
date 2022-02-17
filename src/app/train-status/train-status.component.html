@@ -1,0 +1,26 @@
+
+<div class="container">
+
+    <form id="trainstatus" #getTrainStatusForm="ngForm" (ngSubmit)="GetTrainStatus(getTrainStatusForm.value)">
+
+        <div class="header">
+        
+            <h3>Train Status</h3>
+            
+        </div>
+        
+        <div class="sep"></div>
+
+        <div class="inputs">
+        
+            
+            <input type="studid" placeholder="student_unique_id"  ngModel name="student_unique_id"/>
+            <input type="event_id4" placeholder="event_id"  ngModel name="event_id"/>
+            <input type="attemptnumber4" placeholder="attemptnumber"  ngModel name="attemptnumber"/>
+            
+        </div>
+        <button  style="margin-top:1em;" class="button" type="submit">status</button> 
+    </form>
+
+</div>
+​

@@ -4,9 +4,7 @@
             <form id="url" #getURLForm="ngForm" (ngSubmit)="GetURL(getURLForm.value)">
     
             <div class="header">
-            
                 <h3>Page Generation URL</h3>
-                
             </div>
             
             <div class="sep"></div>
@@ -32,10 +30,6 @@
                  <select type="dropdown" ngModel placeholder="captureimage"  name="captureimage">
                      <option  *ngFor = "let cap of Captureimages" [value] = "cap.value">{{cap.display}} </option> 
                 </select>
-             
-                
-                
-            
             </div>
             <button  style="margin-top:1em;" class="button" type="submit">GetURL</button> 
     

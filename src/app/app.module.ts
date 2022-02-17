@@ -13,6 +13,10 @@ import { AuthserviceService } from './services/authservice.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneratePageComponent } from './generate-page/generate-page.component';
 import { CheckapprovalComponent } from './checkapproval/checkapproval.component';
+import { TrainStatusComponent } from './train-status/train-status.component';
+import { GetReportComponent } from './get-report/get-report.component';
+import { ReportScoreComponent } from './report-score/report-score.component';
+
 const routes: Routes = [
   {
   path: 'user',
@@ -33,7 +37,19 @@ const routes: Routes = [
         {
           path: 'checkapproval',
           component: CheckapprovalComponent,
-          },
+         },
+         {
+          path: 'train-status',
+          component:TrainStatusComponent,
+         },
+         {
+          path: 'get-report',
+          component:GetReportComponent,
+         },
+         {
+          path: 'report-score',
+          component:ReportScoreComponent,
+         },
     {
       path: '',
       redirectTo: '/user',
@@ -47,7 +63,11 @@ const routes: Routes = [
     UserRegComponent,
     DashboardComponent,
     GeneratePageComponent,
-    CheckapprovalComponent
+    CheckapprovalComponent,
+    TrainStatusComponent,
+    GetReportComponent,
+    ReportScoreComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,29 @@
+
+<div class="container">
+
+    <form id="getreport" #getreportForm="ngForm" (ngSubmit)="GetReport(getreportForm.value)">
+
+        <div class="header">
+        
+            <h3>Report</h3>
+            
+        </div>
+        
+        <div class="sep"></div>
+
+        <div class="inputs">
+        
+            
+            <input type="students" placeholder="student_unique_id"  ngModel name="student_unique_id"/>
+            <input type="event_id_22" placeholder="event_id"  ngModel name="event_id"/>
+            <input type="attemptnumber_22" placeholder="attemptnumber"  ngModel name="attemptnumber"/>
+            
+            <button  style="margin-top:1em;" class="button" type="submit">Report</button> 
+            
+        
+        </div>
+
+    </form>
+
+</div>
+​
