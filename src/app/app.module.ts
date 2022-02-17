@@ -13,6 +13,7 @@ import { AuthserviceService } from './services/authservice.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GeneratePageComponent } from './generate-page/generate-page.component';
 import { WheeboxuiComponent } from './proctor/wheeboxui/wheeboxui.component';
+import { CheckapprovalComponent } from './checkapproval/checkapproval.component';
 const routes: Routes = [
   {
   path: 'user',
@@ -27,13 +28,15 @@ const routes: Routes = [
       component: DashboardComponent,
       },
       {
-        path: 'page',
+        path: 'generate-page',
         component: GeneratePageComponent,
         },
         {
           path: 'wheebox',
           component: WheeboxuiComponent,
           },
+          { path: 'checkapproval',
+          component: CheckapprovalComponent},
     {
       path: '',
       redirectTo: '/user',
@@ -47,7 +50,8 @@ const routes: Routes = [
     UserRegComponent,
     DashboardComponent,
     GeneratePageComponent,
-    WheeboxuiComponent
+    WheeboxuiComponent,
+    CheckapprovalComponent
   ],
   imports: [
     CommonModule,

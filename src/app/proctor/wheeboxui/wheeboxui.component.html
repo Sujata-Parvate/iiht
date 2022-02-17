@@ -7,16 +7,15 @@
   </div>  -->
 <input type="hidden" name="chatid"   id="chatid" value="">
 <div id="chatURL" style="display: none">wss://akschat.wheebox.com/</div>  
-<input type="hidden" name="key_sno" id="key_sno" value="3088993"> 
+<input type="hidden" name="key_sno" id="key_sno" [(ngModel)]="udetail.attemptid"> 
 
-   <input type="hidden" [(ngModel)]="udetail.student_name"  name="fname" id="fname" value="Amardeep Demo"> 
+   <input type="hidden" [(ngModel)]="udetail.student_name"  name="fname" id="fname" > 
           
 <div class="footerchat" id="chatBoxMainDiv" style=""> 
      
 <div id="divChat">          
 <div id="nmag"></div>  		                          
-		<div id="chatHeader" style="cursor: pointer;border-radius: 5px 5px 0px 0px; ">Chat Box (Amardeep Demo) <div id="MPicone" style="float:right">+</div> </div>
-		  
+		<div id="chatHeader" style="cursor: pointer;border-radius: 5px 5px 0px 0px; ">Chat Box ({{udetail.student_name}}) <div id="MPicone" style="float:right">+</div> </div>
 		  
 		<div id="showchat" style="display: none">                     
 		<div id="chat-area"><table style="width:88%;border-collapse:unset;border-spacing:10px;" align="right"><tbody><tr><td align="right"><img src="./Sample_files/icon_admin.png" style="width:30px"></td><td style="background:#00b0f0;padding:5px !important;border-radius: 7px;color:white;"><table style="width:100%"><tbody><tr><td><b>proctor1</b></td><td align="right"><b>13:11:00</b></td></tr> <tr><td><div>Announcement: hello2345</div></td></tr></tbody></table> </td></tr></tbody></table><table style="width:88%;border-collapse:unset;border-spacing:10px;" align="left"><tbody><tr><td align="right"><img src="./Sample_files/icon_user.jpg" style="width:30px"></td><td style="background:#eeeeee;padding:5px !important;border-radius: 7px;"><table style="width:100%"><tbody><tr><td><b>Amardeep Demo</b></td><td align="right"><b>13:23:43</b></td></tr> <tr><td><div>11
@@ -84,7 +83,7 @@
       <button id="btn-stop-recording" style="display: none;">Stop Recording</button>
        
       <div style="display:none"> 
-      <input type="text" id="room-id"   [(ngModel)]="udetail.attemptId"     autocorrect="off" autocapitalize="off" size="20">
+      <input type="text" id="room-id"   [(ngModel)]="udetail.attemptid"     autocorrect="off" autocapitalize="off" size="20">
       <button  (click)="openClick();" id="open-room">Open Room</button>
       <button  (click)="openClick();" id="open-room1">Open Room</button>
       </div>

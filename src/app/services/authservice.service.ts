@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import{HttpClient,HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { UserModel } from '../proctor/WheeboxUserModel';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +9,8 @@ import{HttpClient,HttpHeaders} from '@angular/common/http';
 export class AuthserviceService {
 
   public token:string="";
-
+  public userModel:UserModel=new UserModel();
+  public event_id:string="";
   constructor(private http : HttpClient) {
 
    }
@@ -20,7 +23,7 @@ export class AuthserviceService {
      debugger;
      let AuthHeader=new HttpHeaders();
      AuthHeader.append('Access-Control-Allow-Origin','*');
-    return this.http.post("https://localhost:44317/api/UserToken/GetToken",data,{headers:AuthHeader});
+    return this.http.post("https://localhost:44317/api/UserToken/GetToken",data);
   }
 
  
@@ -28,9 +31,29 @@ export class AuthserviceService {
      debugger;
      let AuthHeader=new HttpHeaders();
      AuthHeader.append('Access-Control-Allow-Origin','*');
-     AuthHeader.append('Authrization',this.token);
+     AuthHeader.append('Authorization',this.token);
     return this.http.post(this.BaseURL+"/"+method,data,{headers:AuthHeader});
   }
+
+  GeneratePageUrl(data:any){
+    debugger;
+    let AuthHeader=new HttpHeaders({'Authorization': this.token});
+   return this.http.post(this.BaseURL +"UserToken/GeneratePageURL1" ,data,{headers:AuthHeader})
+  
+ }
+
+ GetapproverStatus(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/GetapproverStatus" ,data,{headers:AuthHeader})
+
+}
+StudentRegistration(data:any){
+  debugger;
+  let AuthHeader=new HttpHeaders({'Authorization': this.token});
+ return this.http.post(this.BaseURL +"UserToken/getRegistration" ,data,{headers:AuthHeader})
+
+}
 
 }
 

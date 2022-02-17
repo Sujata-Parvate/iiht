@@ -11,7 +11,7 @@ export class AppComponent
 {
   constructor(private authService:AuthserviceService,private rout:Router)
   {
-
+ debugger;
      var token= localStorage.getItem("token");
      alert(token+"   this is token")
      if(token!=undefined  && token.length>5)

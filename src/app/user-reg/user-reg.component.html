@@ -1,1 +1,34 @@
-<p> reg </p>
+<div class="container">
+
+    <form id="userreg" #getRegForm="ngForm" (ngSubmit)="StudentRegistration(getRegForm.value)">
+
+        <div class="header">
+        
+            <h3>Student Registration</h3>
+            
+        </div>
+        
+        <div class="sep"></div>
+
+        <div class="inputs">
+        
+            
+            <input type="event_id1" placeholder="event_id"  [(ngModel)]="event_id" name="event_id"/>
+            <input type="attemptnumber" placeholder="attemptnumber"   [(ngModel)]="attemptnumber" name="attemptnumber"/>
+            <input type="student_name1" placeholder="student_name"   [(ngModel)]="student_name" name="student_name"/>
+            <input type="student_unique_id1" placeholder="student_unique_id"   [(ngModel)]="student_unique_id" name="student_unique_id"/>
+            
+            <!-- <div class="checkboxy">
+                <input name="cecky" id="checky" value="1" type="checkbox" /><label class="terms">I accept the terms of use</label>
+            </div> -->
+            
+            <!-- <a id="submit" href="#">SIGN UP</a> -->
+            <button  style="margin-top:1em;" class="button" type="submit">Register</button> 
+            
+        
+        </div>
+
+    </form>
+
+</div>
+​
