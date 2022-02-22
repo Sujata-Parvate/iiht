@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
-declare function startClentLiveVideoStreamingWithUser(udetail:any): any; 
+import { AuthserviceService } from '../services/authservice.service';
+declare function startClentLiveVideoStreamingWithUser(udetail:any,token:string): any; 
 declare function stopTest():any;
 declare function stopcamera():any;
 declare function checkOverAllReport():any;
@@ -14,7 +15,7 @@ declare function startCapuringImageFromAngular():any;
   styleUrls: ['./wheebox.component.css']
 })
 export class WheeboxComponent   implements OnInit,AfterViewInit,OnDestroy {
-  constructor()
+  constructor(private authService:AuthserviceService)
   {
     //alert("app component loaded");
     //startClentLiveVideoStreaming();
@@ -23,8 +24,9 @@ export class WheeboxComponent   implements OnInit,AfterViewInit,OnDestroy {
   startProctoring()
   {
 
-    let  udetail={"student_unique_id":"dilip200","student_name":"dilip pakhare","attemptId":4876497};
-    startClentLiveVideoStreamingWithUser(udetail);
+    let  udetail=this.authService.userRegisterData;
+    //{"student_unique_id":"dilip200","student_name":"dilip pakhare","attemptId":4876497};
+    startClentLiveVideoStreamingWithUser(udetail,this.authService.token);
   }
   stop()
   {

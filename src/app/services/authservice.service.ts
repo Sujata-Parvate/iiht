@@ -9,6 +9,8 @@ export class AuthserviceService {
 
   public token:string="";
 
+  public userRegisterData:any;
+
   constructor(private http : HttpClient) {
 
    }

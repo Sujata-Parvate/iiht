@@ -149,7 +149,7 @@ function startClentLiveVideoStreaming(){
 }
 
 // Function called from Angular Compenent
-function startClentLiveVideoStreamingWithUser(newUser){
+function startClentLiveVideoStreamingWithUser(newUser,token){
 	//alert(udetail.attemptId);
   udetail=newUser;
 	key_sno=udetail.attemptId; 
@@ -160,8 +160,9 @@ function startClentLiveVideoStreamingWithUser(newUser){
 	 
 	document.getElementById("open-room").click();
 	connectionwsGet1(3000);   //start chating thread now and getting chat messages from server.  
-	startProctoringThread(5000,true,false,'81f32713-1b1f-42eb-ac36-e21473cd497d',udetail);  // This function needs to be called once when test starts.
+	//startProctoringThread(5000,true,false,'81f32713-1b1f-42eb-ac36-e21473cd497d',udetail);  // This function needs to be called once when test starts.
 	
+	startProctoringThread(5000,true,false,token,udetail);  // This function needs to be called once when test starts.
 	
 }
 

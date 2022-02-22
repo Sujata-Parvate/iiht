@@ -17,6 +17,7 @@ export class UserRegComponent implements OnInit {
     debugger;
   console.log("abc", JSON.stringify(data));
   this.authoservice.StudentRegistration(data).subscribe((result:any)=>{
+    this.authoservice.userRegisterData=result;
     alert(JSON.stringify(result));
     
    } )
