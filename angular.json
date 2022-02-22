@@ -29,7 +29,17 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/jquery-2.2.3.min.js",
+              "src/assets/RTCMultiConnection.min.js",
+              "src/assets/socket.io.js", 
+              "src/assets/getHTMLMediaElement.js",
+              "src/assets/userChat.js",
+              "src/assets/paasscript1.js",
+              "src/assets/detectnoise.js",
+              "src/assets/paasscript.js"
+
+            ]
           },
           "configurations": {
             "production": {

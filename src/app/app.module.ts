@@ -16,6 +16,9 @@ import { CheckapprovalComponent } from './checkapproval/checkapproval.component'
 import { TrainStatusComponent } from './train-status/train-status.component';
 import { GetReportComponent } from './get-report/get-report.component';
 import { ReportScoreComponent } from './report-score/report-score.component';
+import { WheeboxComponent } from './wheebox/wheebox.component';
+
+import { APP_BASE_HREF } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -50,6 +53,11 @@ const routes: Routes = [
           path: 'report-score',
           component:ReportScoreComponent,
          },
+         {
+          path: 'wheebox',
+          component:WheeboxComponent,
+         },
+         
     {
       path: '',
       redirectTo: '/user',
@@ -66,7 +74,8 @@ const routes: Routes = [
     CheckapprovalComponent,
     TrainStatusComponent,
     GetReportComponent,
-    ReportScoreComponent
+    ReportScoreComponent,
+    WheeboxComponent
     
   ],
   imports: [
@@ -76,7 +85,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthserviceService],
+  providers: [AuthserviceService,{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

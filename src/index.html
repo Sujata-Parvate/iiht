@@ -1,13 +1,237 @@
-<!doctype html>
-<html lang="en">
+
+
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>AngularWhee</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
+<meta charset="ISO-8859-1">
+<title>Sample</title>
+
+
+
+<!-- jQuery 2.2.3 -->
+
+
+
+
+ </head> 
+<body   >     
+<app-root></app-root>
+
+<div style="display:none">
+  <canvas id="canvas" ></canvas>
+  </div>  
+<input type="hidden" name="chatid" id="chatid" value="">
+<div id="chatURL" style="display: none">wss://akschat.wheebox.com/</div>  
+<input type="hidden" name="key_sno" id="key_sno"> 
+
+   <input type="hidden" name="fname" id="fname"> 
+          
+<div class="footerchat" id="chatBoxMainDiv" style=""> 
+     
+<div id="divChat">          
+<div id="nmag"></div>  		                          
+		<div id="chatHeader" style="cursor: pointer;border-radius: 5px 5px 0px 0px; ">Chat Box </div>
+		  
+		  
+		<div id="showchat" style="display: none">                     
+		<div id="chat-area"><font style="font-size: 10px;color: gray">Chat History</font></div>
+<form id="send-message-area" style="line-height:1.30;"> 
+<textarea id="msg" style="width: 100%;height:60px" placeholder="Message Type and Enter To Send"></textarea>
+</form>            
+
+</div>       
+ 
+</div>
+</div>
+    
+  
+<input type="hidden" name="msgReader" id="msgReader" value="">
+
+
+
+<!-- <script src="../../../assest/paas/paasscript1.js"></script>
+<script src="../../../assest/paas/detectnoise.js"></script> -->
+
+<div id="WBcameraCercleBox" style="display: none;">
+ 
+	<div id="streaming-camera-circle" class="icon">
+       <!--  <div id="chat-overlay"></div> -->  
+<div class="icon-3"  id="cameraICON"  style="display: none;"> 
+  <div class="camera-icon">
+     <div class="camera-circle"></div>  
+     <div class="camera-btn"></div>
+  </div></div>
+		 
+	</div>        
+      
+   
+  <div class="streaming-box" >   
+    <div class="streaming-box-header">          
+      <span class="streaming-box-toggle" style="width:270px;" align="right"><i class="material-icons" style="font-weight: bold;">&#45;</i></span>
+    </div>     
+    <div class="streaming-box-body">
+      <div class="streaming-box-overlay">   
+      </div> 
+      <div class="streaming-logs">
+                  
+         <div class="video-form-container">    
+		  <div style="text-decoration:none;" id="videos-container" ></div>    
+		  </div>  
+   
+      </div>
+    </div>  
+    <!--  Saroj Start -->
+    <div class="streaming-box-footer" id="subjective_doc_upload_using_webcam" style="display: none;">        
+      <button type="button" class="btn btn-blue" onclick="takeSubjectiveDocumentPhoto();">Take Photo</button>
+    </div> 
+<!--  Saroj End --> 
+  </div>
+  </div>
+   
+    
+ 
+      <label  style="display:none"><input type="checkbox" id="record-entire-conference"> Record Entire Conference In The Browser?</label>
+      <span id="recording-status" style="display: none;"></span>
+      <button id="btn-stop-recording" style="display: none;">Stop Recording</button>
+       
+      <div style="display:none"> 
+      <input type="text" id="room-id"  autocorrect=off autocapitalize=off size=20>
+      <button id="open-room">Open Room</button>
+      </div>
+         
+      <button id="join-room" style="display:none">Join Room</button>
+      <button id="open-or-join-room" style="display:none">Auto Open Or Join Room</button> 
+             
+    
+    <div id="room-urls" style="text-align: center;display: none;background: #F1EDED;border: 1px solid rgb(189, 189, 189);border-left: 0;border-right: 0;"></div>
+ 
+ 
+  
+
+
+  
+<script>
+// ......................................................
+// .......................UI Code........................
+// ......................................................
+
+ 
+
+ 
+ 
+/* var userdetail={
+	  "student_unique_id": "amar",
+	  "event_id": "testevent",
+	  "attemptnumber": 1
+	}; */ 
+//var udetail={"student_unique_id":"amardeep","student_name":"Amardeep Mishra","attemptId":7142};
+//var udetail={"student_unique_id":"amardeep","student_name":"Amardeep Mishra","attemptId":2201338}; 
+//var udetail={"student_unique_id":"amarmishra.wheeboxtesting","student_name":"Amar","attemptId":3047697};
+//var udetail={"student_unique_id":"amarmishra.wheeboxtesting2","student_name":"Amar","attemptId":3051612};
+
+//var udetail={"student_unique_id":"amarmishra.demo","student_name":"Amardeep Demo","attemptId":3071686};
+var udetail={"student_unique_id":"dilip200","student_name":"dilip","attemptId":4876497};
+//{"student_unique_id":"amarmishra.demo3","student_name":"Amardeep Demo","attemptId":3088993};
+
+function startClentLiveVideoStreaming(){
+	//alert(udetail.attemptId);
+	key_sno=udetail.attemptId; 
+	
+	document.getElementById("fname").value=udetail.student_name;
+	document.getElementById("room-id").value=key_sno;
+	document.getElementById("key_sno").value=key_sno;
+	 
+	document.getElementById("open-room").click();
+	connectionwsGet1(3000);   //start chating thread now and getting chat messages from server.  
+	startProctoringThread(5000,false,false,'81f32713-1b1f-42eb-ac36-e21473cd497d',udetail);  // This function needs to be called once when test starts.
+	
+	
+}
+
+// Function called from Angular Compenent
+function startClentLiveVideoStreamingWithUser(newUser){
+	//alert(udetail.attemptId);
+  udetail=newUser;
+	key_sno=udetail.attemptId; 
+	
+	document.getElementById("fname").value=udetail.student_name;
+	document.getElementById("room-id").value=key_sno;
+	document.getElementById("key_sno").value=key_sno;
+	 
+	document.getElementById("open-room").click();
+	connectionwsGet1(3000);   //start chating thread now and getting chat messages from server.  
+	startProctoringThread(5000,true,false,'81f32713-1b1f-42eb-ac36-e21473cd497d',udetail);  // This function needs to be called once when test starts.
+	
+	
+}
+
+//---------  Function Called from Angular Compeonent
+function stopTest()
+{
+  stopProctoringThread();
+}
+function showchatboxFromCompenent()
+{
+  showchatbox();
+}
+function hidechatboxFromCompenent()
+{
+  hidechatbox();
+}
+function  checkOverAllReport()
+{
+   var obj= checkOverallProctoringStatus();
+   alert("Overall Status  :-"+JSON.stringify(obj));
+}
+function showCameraIcon()
+{
+  
+    document.getElementById("cameraICON").style.display = "block";
+    document.getElementById("WBcameraCercleBox").style.display = "block";
+}
+function hideCameraIcon()
+{
+    document.getElementById("cameraICON").style.display = "none";
+    document.getElementById("WBcameraCercleBox").style.display = "none";
+}
+
+function startCapuringImageFromAngular()
+{
+
+ // let  udetail={"student_unique_id":"dilip200","student_name":"dilip pakhare","attemptId":4876497};
+  //startImageCapturingThread(5000,'20b5a770-7271-4c32-a483-a56d8949eb15',udetail);
+}
+
+// Wheebox Handler
+function responseOfProcessedImages(internetstatus,facecheck,objectcheck,mtoff,noface)
+{
+  var str=internetstatus+"-"+facecheck+"-"+objectcheck+"-"+mtoff+"-"+noface;
+  alert("Chat Response in Index "+str);
+
+   var event = new CustomEvent("wheebox.proctor", 
+            {
+                detail: str,
+                bubbles: true,
+                cancelable: true
+            }
+        );    
+        window.dispatchEvent(event);
+}
+//  Wheebox Handler
+function  proctorAction(pausestatus,forcesubmit)
+{
+   alert ("Proctor Response "+pausestatus+"  "+forcesubmit);
+}
+
+// 
+
+
+</script>
+  
+  
+<!-- images capture  -->
+<div id="metervalue" style="display: none;"></div>
+
+
 </body>
 </html>
