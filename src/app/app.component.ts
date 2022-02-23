@@ -13,10 +13,16 @@ export class AppComponent
   {
  debugger;
      var token= localStorage.getItem("token");
-     alert(token+"   this is token")
+     var userData= localStorage.getItem("userData");
+     alert(token+"   this is token"  +"  "+ userData);
      if(token!=undefined  && token.length>5)
      {
        this.authService.token=token;
+       if(userData!=undefined )
+       {
+         this.authService.userRegisterData= JSON.parse( userData);
+         alert("User Data Initialize "+JSON.stringify(  this.authService.userRegisterData));
+       }
        this.rout.navigate(['/dashboard']);;
      }
      else

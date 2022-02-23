@@ -199,15 +199,15 @@ function hideCameraIcon()
 function startCapuringImageFromAngular()
 {
 
- // let  udetail={"student_unique_id":"dilip200","student_name":"dilip pakhare","attemptId":4876497};
-  //startImageCapturingThread(5000,'20b5a770-7271-4c32-a483-a56d8949eb15',udetail);
+  let  udetail={"student_unique_id":"dilip200","student_name":"dilip pakhare","attemptId":4876497};
+  startImageCapturingThread(5000,'20b5a770-7271-4c32-a483-a56d8949eb15',udetail);
 }
 
 // Wheebox Handler
 function responseOfProcessedImages(internetstatus,facecheck,objectcheck,mtoff,noface)
 {
   var str=internetstatus+"-"+facecheck+"-"+objectcheck+"-"+mtoff+"-"+noface;
-  alert("Chat Response in Index "+str);
+  //alert("Chat Response in Index "+str);
 
    var event = new CustomEvent("wheebox.proctor", 
             {

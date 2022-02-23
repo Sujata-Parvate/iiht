@@ -72,7 +72,7 @@ export class WheeboxComponent   implements OnInit,AfterViewInit,OnDestroy {
 
   @HostListener('window:wheebox.proctor', ['$event']) 
   onProctorRes(event:any): void {
-    alert("In Component .ts "+event.detail);
+   alert("In Component .ts "+event.detail);
   }
 
 

@@ -18,6 +18,8 @@ export class UserRegComponent implements OnInit {
   console.log("abc", JSON.stringify(data));
   this.authoservice.StudentRegistration(data).subscribe((result:any)=>{
     this.authoservice.userRegisterData=result;
+
+    localStorage.setItem("userData", JSON.stringify(  this.authoservice.userRegisterData));
     alert(JSON.stringify(result));
     
    } )
